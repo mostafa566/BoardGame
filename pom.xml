@@ -117,7 +117,7 @@
 	</build>
 
 
- <distributionManagement>
+<distributionManagement>
   <repository>
     <id>maven-releases</id>
     <url>http://34.205.29.13:8081/repository/maven-releases/</url>
