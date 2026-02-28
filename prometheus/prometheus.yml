@@ -1,0 +1,25 @@
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        - http://prometheus.io
+        - http://32.192.23.86:32241
+        - http://34.237.223.156:32241
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 44.193.220.112:9115
+
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['3.236.176.95:9100']
+
+  - job_name: 'jenkins'
+    metrics_path: '/prometheus'
+    static_configs:
+      - targets: ['3.236.176.95:8080']
